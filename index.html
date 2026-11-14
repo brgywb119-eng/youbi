@@ -1,0 +1,1504 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>YOUBI - السنة الثانية Sage-femme</title>
+<style>
+:root{
+ --navy:#142b45;
+ --navy2:#203f5e;
+ --teal:#159b91;
+ --teal-light:#e8f6f3;
+ --pink:#d98da5;
+ --bg:#f4f7fa;
+ --white:#ffffff;
+ --text:#26384b;
+ --muted:#8191a2;
+ --border:#e5ebf0;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+ margin:0;
+ background:var(--bg);
+ color:var(--text);
+ font-family:Arial,"Tahoma",sans-serif;
+ line-height:1.7;
+}
+header{
+ background:var(--navy);
+ color:white;
+ padding:17px 7%;
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ box-shadow:0 4px 18px #142b4520;
+}
+.logo{
+ font-size:30px;
+ font-weight:900;
+ letter-spacing:1px;
+ color:white;
+}
+.logo span{color:#62d0bd}
+header div:last-child{
+ font-size:14px;
+ font-weight:bold;
+}
+.hero{
+ position:relative;
+ overflow:hidden;
+ margin:25px auto;
+ width:calc(100% - 32px);
+ max-width:1100px;
+ padding:45px 30px;
+ border-radius:25px;
+ color:white;
+ background:linear-gradient(120deg,#142b45 0%,#20566b 60%,#159b91 100%);
+ box-shadow:0 12px 30px #142b4520;
+}
+.hero:after{
+ content:"";
+ position:absolute;
+ width:220px;
+ height:220px;
+ border:35px solid #ffffff12;
+ border-radius:50%;
+ left:-65px;
+ bottom:-120px;
+}
+.hero h1{
+ font-size:29px;
+ margin:0 0 10px;
+ position:relative;
+ z-index:1;
+}
+.hero p{
+ line-height:2;
+ color:#e4f4f4;
+ position:relative;
+ z-index:1;
+}
+button{
+ border:0;
+ background:var(--teal);
+ color:white;
+ padding:12px 20px;
+ border-radius:12px;
+ cursor:pointer;
+ font-weight:bold;
+ font-size:14px;
+ transition:.2s;
+}
+button:hover{
+ background:#117e78;
+ transform:translateY(-2px);
+}
+.hero button{
+ background:white;
+ color:var(--navy);
+ position:relative;
+ z-index:1;
+}
+.hero button:hover{background:#e8f6f3}
+.container{
+ width:100%;
+ max-width:1100px;
+ margin:auto;
+ padding:15px 20px 35px;
+}
+.container>h2{
+ color:var(--navy);
+ font-size:22px;
+ margin:12px 0 18px;
+}
+.grid{
+ display:grid;
+ grid-template-columns:repeat(2,minmax(0,1fr));
+ gap:16px;
+}
+.card{
+ background:white;
+ padding:25px 15px;
+ border:1px solid var(--border);
+ border-radius:18px;
+ text-align:center;
+ cursor:pointer;
+ box-shadow:0 5px 18px #142b4509;
+ transition:.25s;
+}
+.card:hover{
+ transform:translateY(-5px);
+ border-color:#9bd8d0;
+ box-shadow:0 12px 25px #142b4515;
+}
+.card .emoji{font-size:35px}
+.card b{
+ display:block;
+ margin-top:10px;
+ color:var(--navy);
+ font-size:15px;
+}
+.panel{
+ background:white;
+ padding:22px;
+ border:1px solid var(--border);
+ border-radius:20px;
+ margin-top:25px;
+ line-height:1.9;
+ box-shadow:0 5px 20px #142b4508;
+}
+#title{
+ color:var(--navy);
+ font-size:21px;
+}
+.search{
+ width:100%;
+ padding:14px 16px;
+ border:1px solid var(--border);
+ background:#f8fafc;
+ border-radius:12px;
+ margin:12px 0;
+ font-size:15px;
+ outline:none;
+ transition:.2s;
+}
+.search:focus{
+ border-color:var(--teal);
+ box-shadow:0 0 0 3px #159b9118;
+ background:white;
+}
+.lesson{
+ background:#f8fafc;
+ border:1px solid var(--border);
+ padding:15px;
+ margin:12px 0;
+ border-radius:14px;
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ gap:12px;
+ transition:.2s;
+}
+.lesson:hover{
+ border-color:#a8d9d2;
+ background:var(--teal-light);
+}
+.lesson span{
+ font-weight:bold;
+ color:var(--navy);
+}
+.lesson a{
+ background:var(--navy);
+ color:white;
+ text-decoration:none;
+ padding:10px 15px;
+ border-radius:10px;
+ white-space:nowrap;
+ font-size:13px;
+ font-weight:bold;
+ transition:.2s;
+}
+.lesson a:hover{background:var(--teal)}
+.note{
+ background:#fff7e8;
+ padding:12px;
+ border-radius:10px;
+ color:#795b27;
+ font-size:13px;
+ margin-top:14px;
+}
+footer{
+ text-align:center;
+ padding:25px 15px;
+ color:var(--muted);
+ font-size:13px;
+ border-top:1px solid var(--border);
+ background:white;
+}
+@media(max-width:600px){
+ header{padding:14px 18px}
+ .logo{font-size:26px}
+ .hero{padding:32px 22px;margin:17px auto}
+ .hero h1{font-size:23px}
+ .container{padding:12px}
+ .grid{grid-template-columns:1fr 1fr;gap:10px}
+ .card{padding:19px 8px}
+ .panel{padding:15px}
+ .lesson{align-items:flex-start;flex-direction:column}
+ .lesson a{width:100%;text-align:center}
+}
+@media(max-width:340px){
+ .grid{grid-template-columns:1fr}
+}
+
+/* YOUBI FEMININE MATERNITY THEME */
+:root {
+  --rose: #c66b91;
+  --rose-dark: #9f456e;
+  --pink-light: #fff0f5;
+  --mauve: #9b83aa;
+  --cream: #fffaf7;
+  --text: #493b49;
+}
+
+body {
+  background: linear-gradient(145deg, #fff8fa, #f8f1f8) !important;
+  color: var(--text) !important;
+  font-family: Arial, sans-serif;
+}
+
+header {
+  background: linear-gradient(120deg, #9f456e, #c77b9e) !important;
+  color: white !important;
+  border-bottom: 3px solid #efd2df;
+}
+
+.logo span {
+  color: #ffe2ed !important;
+}
+
+.hero {
+  background: linear-gradient(135deg, #f7dce8, #eee2f3) !important;
+  color: #69465d !important;
+  border: 1px solid #efd1df;
+  border-radius: 24px !important;
+  box-shadow: 0 8px 25px #b77b9820;
+}
+
+.hero h1 {
+  color: #91466d !important;
+}
+
+button {
+  background: linear-gradient(120deg, #b85e87, #9875a8) !important;
+  color: white !important;
+  border: none !important;
+  border-radius: 14px !important;
+  padding: 12px 22px !important;
+  font-weight: bold;
+}
+
+.card {
+  background: #fff !important;
+  border: 1px solid #f0dce6 !important;
+  border-radius: 20px !important;
+  box-shadow: 0 5px 18px #9e66801a !important;
+  transition: .25s;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  border-color: #d99ab6 !important;
+  box-shadow: 0 10px 25px #b66d9128 !important;
+}
+
+.card .emoji {
+  color: var(--rose) !important;
+}
+
+.panel {
+  background: #fff !important;
+  border: 1px solid #f0dce6 !important;
+  border-radius: 20px !important;
+}
+
+h2 {
+  color: #9f456e !important;
+}
+
+.search {
+  border: 1px solid #e5bfd0 !important;
+  background: #fffafd !important;
+  border-radius: 14px !important;
+  padding: 13px !important;
+}
+
+.lesson {
+  background: #fff8fb !important;
+  border: 1px solid #f0dce6 !important;
+  border-radius: 14px !important;
+  padding: 14px !important;
+  margin: 10px 0 !important;
+}
+
+.lesson a {
+  background: #a85c83 !important;
+  color: white !important;
+  border-radius: 10px !important;
+  padding: 9px 14px !important;
+  text-decoration: none !important;
+}
+
+footer {
+  background: #694b65 !important;
+  color: #fff !important;
+  border-top: 3px solid #e8c4d5;
+}
+
+@media (max-width: 600px) {
+  .hero {
+    padding: 24px 16px !important;
+  }
+  .card {
+    border-radius: 16px !important;
+  }
+}
+
+
+/* Professional YOUBI Typography */
+
+
+body {
+  font-family: 'Cairo', sans-serif !important;
+  line-height: 1.9 !important;
+  letter-spacing: 0 !important;
+}
+
+h1, h2, h3, .logo {
+  font-family: 'Cairo', sans-serif !important;
+  font-weight: 800 !important;
+  letter-spacing: -.4px;
+}
+
+.hero h1 {
+  font-size: clamp(25px, 5vw, 36px) !important;
+  line-height: 1.6 !important;
+}
+
+.hero p {
+  font-size: 16px !important;
+  font-weight: 500;
+  line-height: 2;
+}
+
+.card b {
+  font-size: 15px !important;
+  font-weight: 700 !important;
+}
+
+.lesson {
+  font-family: 'Cairo', sans-serif !important;
+  font-size: 14px !important;
+  font-weight: 600;
+  line-height: 1.9 !important;
+}
+
+.lesson a, button {
+  font-family: 'Cairo', sans-serif !important;
+  font-weight: 700 !important;
+}
+
+input, .search {
+  font-family: 'Cairo', sans-serif !important;
+  font-size: 14px !important;
+}
+
+footer {
+  font-family: 'Inter', 'Cairo', sans-serif !important;
+  font-size: 12px;
+  letter-spacing: .4px;
+}
+
+
+/* Glowing YOUBI subtitle */
+.hero p {
+  color: #a52f70 !important;
+  font-weight: 800 !important;
+  text-shadow:
+    0 0 5px #ffffff,
+    0 0 12px #f7b5d4,
+    0 0 22px #e98bb9 !important;
+  font-size: 17px !important;
+  line-height: 2.1 !important;
+}
+
+
+/* YOUBI Maternity Background */
+.hero {
+  background:
+    linear-gradient(
+      90deg,
+      rgba(255, 239, 246, 0.94),
+      rgba(255, 248, 250, 0.78)
+    ),
+    url("https://images.unsplash.com/photo-1519689680058-324335c77eba?w=1600")
+    center/cover no-repeat !important;
+
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: 1px solid #f1ccdc !important;
+  border-radius: 25px !important;
+  box-shadow: 0 10px 30px #b76d9120;
+}
+
+.hero h1,
+.hero p {
+  color: #91466d !important;
+  text-shadow: 0 1px 5px white !important;
+}
+
+@media(max-width:600px) {
+  .hero {
+    min-height: 250px;
+    background-position: center !important;
+  }
+}
+
+
+/* YOUBI Full Page Maternity Background */
+body {
+  background:
+    linear-gradient(
+      rgba(255, 248, 251, 0.12),
+      rgba(255, 248, 251, 0.12)
+    ),
+    url("https://images.unsplash.com/photo-1519689680058-324335c77eba?w=1800")
+    center center / 420px auto fixed repeat !important;
+  background-color: #fff0f5 !important;
+}
+
+header {
+  background: rgba(159, 69, 110, 0.92) !important;
+}
+
+.hero {
+  background: rgba(255, 239, 246, 0.18) !important;
+  backdrop-filter: blur(2px);
+  min-height: 300px;
+}
+
+.container,
+.panel {
+  background: rgba(255, 255, 255, 0.58) !important;
+  backdrop-filter: blur(3px);
+  border-radius: 20px;
+}
+
+.card,
+.lesson {
+  background: rgba(255, 255, 255, 0.72) !important;
+}
+
+footer {
+  background: rgba(105, 75, 101, 0.92) !important;
+}
+
+@media(max-width: 600px) {
+  body {
+    background-attachment: scroll !important;
+    background-position: center !important;
+  }
+}
+
+
+/* Student Space */
+.student-space {
+  background: linear-gradient(135deg,#fff0f6,#f4eafa);
+  border: 1px solid #e9c4d7;
+  border-radius: 24px;
+  padding: 22px;
+  margin: 25px 0;
+  box-shadow: 0 8px 25px #a85c8318;
+}
+.student-heading {
+  display:flex;
+  align-items:center;
+  gap:14px;
+}
+.student-icon {
+  background:white;
+  border-radius:18px;
+  padding:12px;
+  font-size:28px;
+}
+.student-heading h2 {
+  margin:0;
+  color:#9f456e;
+}
+.student-heading p {
+  margin:4px 0;
+  color:#806477;
+}
+.student-progress {
+  height:12px;
+  background:#ead8e2;
+  border-radius:20px;
+  overflow:hidden;
+  margin-top:22px;
+}
+#studentProgressBar {
+  width:0%;
+  height:100%;
+  background:linear-gradient(90deg,#bd6791,#9875a8);
+  border-radius:20px;
+  transition:width .4s;
+}
+#studentProgressText {
+  color:#91466d;
+  font-weight:bold;
+}
+.student-stats {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+  margin:18px 0;
+}
+.student-stats div {
+  background:#ffffffc9;
+  border-radius:15px;
+  padding:14px 5px;
+  text-align:center;
+}
+.student-stats strong {
+  display:block;
+  color:#a64f7c;
+  font-size:23px;
+}
+.student-stats span {
+  font-size:12px;
+  color:#70596c;
+}
+.student-actions {
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+}
+.student-actions button {
+  flex:1;
+}
+.lesson-actions {
+  display:flex;
+  flex-wrap:wrap;
+  gap:7px;
+  margin-top:12px;
+}
+.lesson-action {
+  background:#f5e4ed !important;
+  color:#91466d !important;
+  border:1px solid #e9c4d7 !important;
+  border-radius:10px !important;
+  padding:8px 10px !important;
+  font-size:12px;
+}
+
+
+/* Arabic French Medical Dictionary */
+.dictionary {
+  margin:28px 0;
+  padding:22px;
+  border-radius:23px;
+  background:linear-gradient(140deg,#fff0f6,#f4eafa);
+  border:1px solid #ebcbdc;
+}
+.dictionary-head {
+  display:flex;
+  align-items:center;
+  gap:13px;
+}
+.dictionary-head span {font-size:35px;}
+.dictionary-head h2 {margin:0;color:#9f456e;}
+.dictionary-head p {color:#806477;margin:4px 0 15px;}
+.dict-filters {
+  display:flex;
+  flex-wrap:wrap;
+  gap:7px;
+  margin:14px 0;
+}
+.dict-filters button {
+  font-size:12px;
+  padding:8px 12px !important;
+}
+.dict-entry {
+  background:#fff;
+  border:1px solid #efd9e4;
+  border-radius:15px;
+  padding:14px;
+  margin:10px 0;
+}
+.dict-entry h3 {color:#9f456e;margin:0 0 5px;}
+.dict-fr {color:#9875a8;font-weight:bold;}
+.dict-explain {color:#554654;font-size:14px;margin-top:8px;}
+
+
+/* Floating Medical Dictionary */
+@keyframes dictionaryFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+.dictionary {
+  animation: dictionaryFloat 4s ease-in-out infinite;
+  box-shadow: 0 12px 30px rgba(190,100,145,.16);
+  will-change: transform;
+}
+
+.dictionary-head span {
+  display: inline-block;
+  animation: dictionaryFloat 3s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dictionary,
+  .dictionary-head span {
+    animation: none;
+  }
+}
+
+
+/* Dictionary full scroll area */
+.dictionary {
+  min-height: 600px !important;
+  height: auto !important;
+  animation: none !important;
+  overflow: visible !important;
+}
+
+#dictionaryResults {
+  max-height: 650px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 10px;
+  background: rgba(255,255,255,.65);
+  border-radius: 16px;
+  scrollbar-width: thin;
+  scrollbar-color: #c66b91 #f8e8ef;
+}
+
+#dictionaryResults::-webkit-scrollbar {
+  width: 8px;
+}
+
+#dictionaryResults::-webkit-scrollbar-thumb {
+  background: #c66b91;
+  border-radius: 20px;
+}
+
+.dict-entry {
+  margin-bottom: 14px !important;
+}
+
+#dictSearch {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* YOUBI EXAMS */
+#youbiExams {
+  margin: 30px 0;
+  padding: 22px;
+  border-radius: 22px;
+  background: rgba(255,255,255,.92);
+  border: 1px solid #edbfd2;
+  box-shadow: 0 8px 25px rgba(160,70,110,.12);
+}
+#youbiExams h2 {
+  color: #a52f70;
+  text-align: center;
+}
+.exam-intro {
+  text-align: center;
+  color: #80536a;
+  line-height: 2;
+}
+.exam-question {
+  background: #fff5f9;
+  border: 1px solid #f0d0df;
+  border-radius: 15px;
+  padding: 15px;
+  margin: 15px 0;
+}
+.exam-question p {
+  color: #743653;
+  font-weight: bold;
+}
+.exam-option {
+  display: block;
+  padding: 10px;
+  margin: 8px 0;
+  border-radius: 10px;
+  background: white;
+  border: 1px solid #efd2df;
+  cursor: pointer;
+}
+.exam-option:has(input:checked) {
+  background: #fce3ee;
+  border-color: #c65d8c;
+}
+.exam-option input {
+  margin-left: 8px;
+}
+.exam-btn {
+  display: block;
+  width: 100%;
+  padding: 13px;
+  margin-top: 12px;
+  border: 0;
+  border-radius: 12px;
+  background: #b94f80;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+}
+#examResult {
+  margin-top: 18px;
+  padding: 15px;
+  border-radius: 13px;
+  background: #fce8f1;
+  color: #743653;
+  line-height: 2;
+}
+.exam-correct { color: #23834b; font-weight: bold; }
+.exam-wrong { color: #bd405c; font-weight: bold; }
+</style>
+
+
+<style>
+.exam-menu-btn {
+  display:inline-block;
+  margin:8px;
+  padding:12px 20px;
+  border:0;
+  border-radius:14px;
+  background:#b94f80;
+  color:white;
+  font-weight:bold;
+  cursor:pointer;
+}
+#youbiExams { margin-top:20px; }
+</style>
+<!-- YOUBI PDF EXAMS -->
+
+<style>
+.exam-pdf-list {
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:12px;
+  margin:18px 0;
+}
+.exam-pdf-card {
+  background:#fff2f7;
+  border:1px solid #e9bfd1;
+  border-radius:15px;
+  padding:15px;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  color:#943b68;
+}
+.exam-pdf-card a {
+  display:block;
+  text-align:center;
+  padding:10px;
+  border-radius:10px;
+  background:#b94f80;
+  color:white;
+  text-decoration:none;
+}
+@media(max-width:450px) {
+  .exam-pdf-list {grid-template-columns:1fr;}
+}
+</style>
+
+
+
+
+</head>
+<body>
+
+<header>
+<div class="logo">YOU<span>BI</span></div>
+<div>🎓 فضاء الطالب</div>
+</header>
+
+<section class="hero">
+<h1>مرحبا بك في YOUBI ❤️</h1>
+<p>منصتك التعليمية لطلبة القبالة.<br>
+السنة الثانية – Sage-femme</p>
+<button onclick="showLibrary()">ابدأ التعلم ←</button>
+</section>
+
+<main class="container">
+
+<section class="student-space" id="studentSpace">
+  <div class="student-heading">
+    <div class="student-icon">🌸</div>
+    <div>
+      <h2>فضاء الطالبة</h2>
+      <p>رحلتك نحو التميز في عالم القبالة</p>
+    </div>
+  </div>
+
+  <div class="student-progress">
+    <div id="studentProgressBar"></div>
+  </div>
+  <p id="studentProgressText">تقدمك الدراسي: 0%</p>
+
+  <div class="student-stats">
+    <div><strong id="doneCount">0</strong><span>دروس مكتملة</span></div>
+    <div><strong id="favoriteCount">0</strong><span>دروس مفضلة</span></div>
+    <div><strong id="reviewCount">0</strong><span>للمراجعة</span></div>
+  </div>
+
+  <div class="student-actions">
+    <button onclick="showStudentCollection('favorites')">❤️ المفضلة</button>
+    <button onclick="showStudentCollection('review')">📖 قائمة المراجعة</button>
+  </div>
+</section>
+
+<h2>📚 مكتبة السنة الثانية</h2>
+
+<div class="grid">
+<div class="card" onclick="showCategory('universitaires')">
+<div class="emoji">🎓</div>
+<b>دروس جامعية منشورة</b>
+</div>
+
+<div class="card" onclick="openYoubiExams()">
+<div class="emoji">📝</div>
+
+
+  <b>YOUBI AI</b>
+  <small>المساعد الذكي للطلبة</small>
+</div>
+
+<b>الامتحانات</b>
+</div>
+</div>
+
+<section id="content" class="panel">
+
+<h2 id="title">📚 المكتبة التعليمية</h2>
+<input id="search" class="search" placeholder="ابحث عن مقياس..." oninput="filterLessons()">
+<div id="body">
+<p>اختَر تصنيفاً لعرض المقاييس وفتح ملفات PDF.</p>
+</div>
+</section>
+</main>
+
+
+<section class="dictionary" id="medicalDictionary">
+  <div class="dictionary-head">
+    <span>📚</span>
+    <div>
+      <h2>القاموس الطبي</h2>
+      <p>قاموس عربي – Français لطلبة القبالة</p>
+    </div>
+  </div>
+
+  <input id="dictSearch" class="search"
+    placeholder="ابحثي بالعربية أو الفرنسية..."
+    oninput="searchDictionary()">
+
+  <div class="dict-filters">
+    <button onclick="filterDictionary('الكل')">الكل</button>
+    <button onclick="filterDictionary('الحمل')">الحمل</button>
+    <button onclick="filterDictionary('الولادة')">الولادة</button>
+    <button onclick="filterDictionary('النساء')">النساء</button>
+    <button onclick="filterDictionary('حديثو الولادة')">حديثو الولادة</button>
+    <button onclick="filterDictionary('التشريح')">التشريح</button>
+  </div>
+
+  <div id="dictionaryResults"></div>
+</section>
+
+<footer>YOUBI © 2026 | MATERNITÉ & SAGE-FEMME</footer>
+
+
+<section id="youbiExams" style="display:none;">
+  <h2>📝 فضاء الامتحانات</h2>
+
+  <button class="exam-btn" onclick="
+    document.getElementById('youbiExams').style.display='none';
+    document.getElementById('content').style.display='block';
+    document.getElementById('content').scrollIntoView({behavior:'smooth'});
+  ">← العودة إلى المكتبة</button>
+
+  <h3>📚 مواضيع الامتحانات PDF</h3>
+  <p class="exam-intro">اختاري المقياس لفتح موضوع الامتحان بصيغة PDF.</p>
+
+  <div class="exam-pdf-list">
+    <div class="exam-pdf-card">
+      <b>🤰 Gynéco-obstétrique L2 – Sujet 2</b>
+      <small>تمارين في التوليد</small>
+      <a href="pdf/exams/gyneco_obstetrique_L2_sujet2.pdf" target="_blank" rel="noopener">فتح PDF</a>
+    </div>
+
+    <div class="exam-pdf-card">
+      <b>🌸 Gynécologie L2 – Sujets + corrigés</b>
+      <small>موضوع مع تصحيح</small>
+      <a href="pdf/exams/gynecologie_L2_corrige.pdf" target="_blank" rel="noopener">فتح PDF</a>
+    </div>
+
+    <div class="exam-pdf-card">
+      <b>🤰 Obstétrique</b>
+      <a href="pdf/exams/obstetrique.pdf" target="_blank">فتح موضوع PDF</a>
+    </div>
+    <div class="exam-pdf-card">
+      <b>🌸 Gynéco-obstétrique L2 – Sage-femme</b>
+      <a href="pdf/exams/gyneco_obstetrique_sage_femme_L2.pdf" target="_blank">فتح موضوع PDF</a>
+    </div>
+    <div class="exam-pdf-card">
+      <b>👶 Néonatologie</b>
+      <a href="pdf/exams/neonatologie.pdf" target="_blank">فتح موضوع PDF</a>
+    </div>
+    <div class="exam-pdf-card">
+      <b>🧬 Embryologie</b>
+      <a href="pdf/exams/embryologie.pdf" target="_blank">فتح موضوع PDF</a>
+    </div>
+    <div class="exam-pdf-card">
+      <b>💗 Contraception</b>
+      <a href="pdf/exams/contraception.pdf" target="_blank">فتح موضوع PDF</a>
+    </div>
+  </div>
+
+  <h3>✅ اختبر معلوماتك QCM</h3>
+  <p class="exam-intro">
+    أجيبي عن الأسئلة ثم اضغطي على تصحيح الاختبار.
+  </p>
+  <div id="examQuestions"></div>
+  <button class="exam-btn" onclick="correctYoubiExam()">✅ تصحيح الاختبار</button>
+  <div id="examResult"></div>
+  <button class="exam-btn" onclick="startYoubiExam()">🔄 إعادة الاختبار</button>
+</section>
+
+
+
+<script>
+const categories={
+principes:{
+title:"مبادئ القبالة والمقاييس الأساسية",
+lessons:[
+["مقدمة في علم التوليد","01_intro_obstetrique.pdf"],
+["تشريح الجهاز التناسلي الأنثوي","02_anatomie_appareil_genital.pdf"],
+["العلوم الإنسانية والاجتماعية","13_sciences_humaines.pdf"],
+["منهجية المذكرة المهنية","14_memoire.pdf"],
+["الفحوصات البيولوجية","16_examens_biologiques.pdf"],
+["علم الجنس","17_sexologie.pdf"],
+["التثقيف العلاجي","18_education_therapeutique.pdf"]
+]},
+grossesse:{
+title:"الحمل ومتابعته",
+lessons:[
+["مراحل الحمل","03_etapes_grossesse.pdf"],
+["نمو الجنين","04_developpement_foetal.pdf"],
+["المشيمة ووظائفها","05_placenta.pdf"],
+["متابعة الحمل","06_suivi_grossesse.pdf"],
+["التغيرات الفسيولوجية أثناء الحمل","07_changements_physiologiques.pdf"],
+["التغذية أثناء الحمل","12_nutrition_grossesse.pdf"],
+["التوليد الفيزيولوجي - الجزء الأول","15_obstetrique_physio_1.pdf"]
+]},
+accouchement:{
+title:"الولادة وما بعدها",
+lessons:[
+["مراحل الولادة","08_accouchement.pdf"],
+["فترة ما بعد الولادة","09_postpartum.pdf"],
+["الرضاعة الطبيعية","10_allaitement.pdf"],
+["التوليد الفيزيولوجي - الجزء الثاني","20_obstetrique_physio_2.pdf"]
+]},
+nouveau:{
+title:"حديث الولادة والطفل",
+lessons:[
+["حديث الولادة","11_nouveau_ne.pdf"],
+["تغذية الرضيع والطفل","21_dietetique_infantile.pdf"],
+["رعاية الطفل","22_puericulture.pdf"],
+["طب حديثي الولادة","23_neonatalogie.pdf"]
+]},
+complementaires:{
+title:"مقاييس إضافية وPMC",
+lessons:[
+["PMC - الجزء الأول (التسمية قيد التأكيد)","19_pmc_1.pdf"],
+["PMC - الجزء الثاني (التسمية قيد التأكيد)","24_pmc_2.pdf"]
+]}
+
+,
+universitaires:{
+title:"دروس جامعية منشورة",
+lessons:[
+["Contraception - جامعة وهران 1 (طب 5)","oran/contraception_oran.pdf"],
+["Souffrance fœtale aiguë - جامعة تلمسان","obstetrique/02_souffrance_foetale_aigue.pdf"],
+["Embryologie humaine - جامعة أم البواقي","embryologie/03_embryologie_humaine.pdf"],
+["Fécondation et segmentation - جامعة تلمسان","reproduction/04_fecondation_segmentation.pdf"],
+["Développement de l’appareil génital - جامعة تلمسان","reproduction/05_developpement_appareil_genital.pdf"],
+["Menace d’accouchement prématuré MAP - جامعة تلمسان","universitaires/03_MAP.pdf"],
+["Souffrance fœtale chronique RCIU - جامعة تلمسان","universitaires/04_RCIU.pdf"]
+,
+["Nutrition et diététique - جامعة تلمسان","suivi_grossesse/01_nutrition_dietetique.pdf"],
+["Guide national de suivi de grossesse - وزارة الصحة الجزائرية 2025","suivi_grossesse/02_guide_suivi_grossesse_2025.pdf"],
+["Accouchement sur utérus cicatriciel - جامعة تلمسان","accouchement/12_accouchement_uterus_cicatriciel.pdf"],
+["Les césariennes - جامعة تلمسان","accouchement/13_les_cesariennes.pdf"],
+["Accouchement - جامعة تلمسان 2015","accouchement/14_accouchement_2015.pdf"],
+["Évaluation systématique du nouveau-né - جامعة تلمسان","neonatologie/15_evaluation_nouveau_ne.pdf"],
+["Ictère néonatal - جامعة تلمسان","neonatologie/16_ictere_neonatal.pdf"],
+["Détresse respiratoire du nouveau-né - جامعة تلمسان","neonatologie/17_detresse_respiratoire.pdf"],
+["Urgences chirurgicales néonatales - جامعة تلمسان","neonatologie/18_urgences_chirurgicales.pdf"],
+["Prolapsus génital - جامعة تلمسان","gynecologie/19_prolapsus_genital.pdf"],
+["Profil des cancers gynécologiques - جامعة تلمسان","gynecologie/20_cancers_gynecologiques.pdf"],
+["Grossesse extra-utérine - جامعة تلمسان","gynecologie/21_grossesse_extra_uterine.pdf"],
+["Grossesse molaire - جامعة تلمسان","gynecologie/22_grossesse_molaire.pdf"],
+["Enquête sur les facteurs entravant l’allaitement maternel - جامعة تلمسان 2024","postpartum/23_allaitement_facteurs_2024.pdf"]
+,
+["L’allaitement maternel exclusif à 6 mois - جامعة تلمسان 2023","postpartum/24_allaitement_exclusif_2023.pdf"]
+]}
+};
+
+let currentLessons=[];
+let universityView=false;
+
+function showLibrary(){
+document.getElementById("title").textContent="📚 مكتبة السنة الثانية";
+document.getElementById("search").value="";
+document.getElementById("body").innerHTML="<p>اختَر تصنيفاً لعرض المقاييس وفتح ملفات PDF.</p>";
+currentLessons=[];
+document.getElementById("content").scrollIntoView({behavior:"smooth"});
+}
+
+
+const universitySubjects = [
+ {title:"Contraception et santé reproductive", icon:"🌸", paths:["oran/"]},
+ {title:"Obstétrique", icon:"🤰", paths:["obstetrique/","universitaires/"]},
+ {title:"Embryologie et Reproduction", icon:"🧬", paths:["embryologie/","reproduction/"]},
+ {title:"Suivi de grossesse", icon:"🩺", paths:["suivi_grossesse/"]},
+ {title:"Accouchement", icon:"🏥", paths:["accouchement/"]},
+ {title:"Néonatologie", icon:"👶", paths:["neonatologie/"]},
+ {title:"Gynécologie", icon:"🌷", paths:["gynecologie/"]},
+ {title:"Post-partum et Allaitement", icon:"🍼", paths:["postpartum/"]}
+];
+
+function showCategory(key){
+ if(key === "universitaires"){
+  universityView = true;
+  showUniversitySubjects();
+  return;
+ }
+
+ universityView = false;
+ const category=categories[key];
+ document.getElementById("title").textContent="📁 "+category.title;
+ document.getElementById("search").value="";
+ currentLessons=category.lessons;
+ renderLessons(currentLessons);
+ document.getElementById("content").scrollIntoView({behavior:"smooth"});
+}
+
+function showUniversitySubjects(){
+ universityView = true;
+ document.getElementById("title").textContent="📚 مكتبة الدروس حسب المقاييس";
+ document.getElementById("search").value="";
+
+ const body=document.getElementById("body");
+ body.innerHTML="";
+
+ const intro=document.createElement("p");
+ intro.textContent="اختَر المقياس لعرض الدروس الجامعية وفتح ملفات PDF.";
+ body.appendChild(intro);
+
+ universitySubjects.forEach(subject=>{
+  const lessons=categories.universitaires.lessons.filter(
+   lesson=>subject.paths.some(path=>lesson[1].startsWith(path))
+  );
+
+  if(!lessons.length) return;
+
+  const card=document.createElement("div");
+  card.className="lesson";
+
+  const name=document.createElement("span");
+  name.textContent=subject.icon+" "+subject.title+" ("+lessons.length+")";
+
+  const button=document.createElement("button");
+  button.type="button";
+  button.textContent="عرض الدروس";
+  button.onclick=()=>showUniversitySubject(subject);
+
+  card.append(name,button);
+  body.appendChild(card);
+ });
+
+ const note=document.createElement("div");
+ note.className="note";
+ 
+ body.appendChild(note);
+
+ document.getElementById("content").scrollIntoView({behavior:"smooth"});
+}
+
+function showUniversitySubject(subject){
+ universityView=true;
+ currentLessons=categories.universitaires.lessons.filter(
+  lesson=>subject.paths.some(path=>lesson[1].startsWith(path))
+ );
+
+ document.getElementById("title").textContent=subject.icon+" "+subject.title;
+ document.getElementById("search").value="";
+ renderLessons(currentLessons);
+ document.getElementById("content").scrollIntoView({behavior:"smooth"});
+}
+
+let studentListMode = false;
+
+function savedList(key) {
+  try {
+    return JSON.parse(localStorage.getItem(key) || "[]");
+  } catch(e) {
+    return [];
+  }
+}
+
+function toggleStudentItem(key, path) {
+  let list = savedList(key);
+  list = list.includes(path)
+    ? list.filter(x => x !== path)
+    : [...list, path];
+  localStorage.setItem(key, JSON.stringify(list));
+}
+
+function updateStudentSpace() {
+  const all = Object.values(categories).flatMap(c => c.lessons || []);
+  const done = savedList("youbi_done");
+  const fav = savedList("youbi_favorites");
+  const review = savedList("youbi_review");
+
+  const percent = all.length
+    ? Math.round(done.filter(x => all.some(l => l[1] === x)).length / all.length * 100)
+    : 0;
+
+  document.getElementById("studentProgressBar").style.width = percent + "%";
+  document.getElementById("studentProgressText").textContent =
+    "تقدمك الدراسي: " + percent + "%";
+  document.getElementById("doneCount").textContent = done.length;
+  document.getElementById("favoriteCount").textContent = fav.length;
+  document.getElementById("reviewCount").textContent = review.length;
+}
+
+function showStudentCollection(kind) {
+  studentListMode = true;
+  universityView = false;
+  document.getElementById("search").value = "";
+
+  const all = Object.values(categories).flatMap(c => c.lessons || []);
+  const key = kind === "favorites" ? "youbi_favorites" : "youbi_review";
+  const list = savedList(key);
+  const filtered = all.filter(l => list.includes(l[1]));
+
+  document.getElementById("title").textContent =
+    kind === "favorites" ? "❤️ دروسي المفضلة" : "📖 قائمة المراجعة";
+
+  renderLessons(filtered);
+  document.getElementById("content").scrollIntoView({behavior:"smooth"});
+}
+
+
+function renderLessons(lessons){
+const body=document.getElementById("body");
+body.innerHTML="";
+
+const back=document.createElement("button");
+back.textContent="← العودة إلى المكتبة";
+back.onclick=()=>{
+ if(studentListMode){
+   studentListMode=false;
+   showLibrary();
+   document.getElementById("studentSpace").scrollIntoView({behavior:"smooth"});
+ } else {
+   universityView ? showUniversitySubjects() : showLibrary();
+ }
+};
+body.appendChild(back);
+
+if(lessons.length===0){
+const p=document.createElement("p");
+p.textContent="لم يتم العثور على مقياس.";
+body.appendChild(p);
+return;
+}
+
+lessons.forEach(lesson=>{
+const div=document.createElement("div");
+div.className="lesson";
+
+const name=document.createElement("span");
+name.textContent="📕 "+lesson[0];
+
+const link=document.createElement("a");
+link.href="pdf/"+lesson[1];
+link.target="_blank";
+link.rel="noopener";
+link.textContent="فتح PDF";
+
+div.append(name,link);
+
+const actions = document.createElement("div");
+actions.className = "lesson-actions";
+
+const done = document.createElement("button");
+done.className = "lesson-action";
+done.textContent = savedList("youbi_done").includes(lesson[1])
+  ? "✅ مكتمل" : "☑️ تحديد كمكتمل";
+done.onclick = () => {
+  toggleStudentItem("youbi_done", lesson[1]);
+  renderLessons(lessons);
+  updateStudentSpace();
+};
+
+const fav = document.createElement("button");
+fav.className = "lesson-action";
+fav.textContent = savedList("youbi_favorites").includes(lesson[1])
+  ? "💗 محفوظ" : "🤍 أضف للمفضلة";
+fav.onclick = () => {
+  toggleStudentItem("youbi_favorites", lesson[1]);
+  renderLessons(lessons);
+  updateStudentSpace();
+};
+
+const review = document.createElement("button");
+review.className = "lesson-action";
+review.textContent = savedList("youbi_review").includes(lesson[1])
+  ? "📖 ضمن المراجعة" : "➕ للمراجعة";
+review.onclick = () => {
+  toggleStudentItem("youbi_review", lesson[1]);
+  renderLessons(lessons);
+  updateStudentSpace();
+};
+
+actions.append(done, fav, review);
+div.appendChild(actions);
+body.appendChild(div);
+});
+
+const note=document.createElement("div");
+note.className="note";
+note.textContent="";
+body.appendChild(note);
+}
+
+function filterLessons(){
+const q=document.getElementById("search").value.trim().toLowerCase();
+const results=categories.universitaires.lessons;
+const filtered=results.filter(x=>x[0].toLowerCase().includes(q));
+
+document.getElementById("title").textContent="🔎 نتائج البحث";
+renderLessons(filtered);
+}
+
+const medicalTerms = [
+["الحمل","Grossesse","الحالة التي ينمو فيها الجنين داخل الرحم.","الحمل"],
+["الولادة","Accouchement","عملية خروج الجنين من الرحم.","الولادة"],
+["القابلة","Sage-femme","مختصة في متابعة الحمل والمساعدة أثناء الولادة ورعاية الأم والمولود.","الولادة"],
+["الرحم","Utérus","عضو عضلي ينمو داخله الجنين أثناء الحمل.","التشريح"],
+["المشيمة","Placenta","عضو يساهم في تبادل الأكسجين والمغذيات بين الأم والجنين.","الحمل"],
+["عنق الرحم","Col de l’utérus","الجزء السفلي من الرحم المتصل بالمهبل.","التشريح"],
+["المهبل","Vagin","قناة عضلية تصل عنق الرحم بالخارج.","التشريح"],
+["الإباضة","Ovulation","تحرر بويضة من المبيض.","النساء"],
+["الإخصاب","Fécondation","اتحاد الحيوان المنوي بالبويضة.","الحمل"],
+["الجنين","Fœtus","الطفل في مرحلة نموه داخل الرحم بعد المرحلة الجنينية المبكرة.","الحمل"],
+["السائل الأمنيوسي","Liquide amniotique","السائل المحيط بالجنين داخل الكيس الأمنيوسي.","الحمل"],
+["حركة الجنين","Mouvements fœtaux","الحركات التي تقوم بها الجنين داخل الرحم.","الحمل"],
+["تقلصات الرحم","Contractions utérines","انقباضات عضلة الرحم، وتصبح منتظمة أثناء المخاض.","الولادة"],
+["المخاض","Travail obstétrical","مرحلة التقلصات والتغيرات التي تؤدي إلى الولادة.","الولادة"],
+["اتساع عنق الرحم","Dilatation du col","زيادة فتحة عنق الرحم خلال المخاض.","الولادة"],
+["التمدد","Effacement du col","ترقق وقصر عنق الرحم استعداداً للولادة.","الولادة"],
+["الولادة الطبيعية","Accouchement par voie basse","ولادة تتم عبر القناة التناسلية.","الولادة"],
+["العملية القيصرية","Césarienne","ولادة جراحية يتم فيها إخراج الطفل عبر شق في البطن والرحم.","الولادة"],
+["نزيف ما بعد الولادة","Hémorragie du post-partum","نزيف يحدث بعد الولادة ويتطلب تقييماً ورعاية طبية عاجلة.","الولادة"],
+["الرضاعة الطبيعية","Allaitement maternel","تغذية الرضيع بحليب الأم.","حديثو الولادة"],
+["حديث الولادة","Nouveau-né","الطفل خلال أول 28 يوماً من الحياة.","حديثو الولادة"],
+["الخداج","Prématurité","الولادة قبل إتمام 37 أسبوعاً من الحمل.","حديثو الولادة"],
+["اليرقان الوليدي","Ictère néonatal","اصفرار جلد وعيني المولود بسبب ارتفاع البيليروبين.","حديثو الولادة"],
+["المبيض","Ovaire","عضو تناسلي أنثوي ينتج البويضات والهرمونات.","التشريح"],
+["قناة فالوب","Trompe de Fallope","قناة تصل المنطقة القريبة من المبيض بالرحم.","التشريح"],
+["بطانة الرحم","Endomètre","الطبقة الداخلية المبطنة للرحم.","التشريح"],
+["الدورة الشهرية","Cycle menstruel","تغيرات دورية تحدث في الجهاز التناسلي الأنثوي.","النساء"],
+["انقطاع الطمث","Ménopause","مرحلة توقف الدورة الشهرية نهائياً.","النساء"],
+["فقر الدم","Anémie","انخفاض تركيز الهيموغلوبين عن المستوى المرجعي المناسب.","النساء"],
+["تسمم الحمل","Prééclampsie","اضطراب مرتبط بالحمل يتميز بارتفاع ضغط الدم وظهور علامات أخرى.","الحمل"]
+];
+
+let activeDictionaryCategory = "الكل";
+
+function renderDictionary(items) {
+  const box = document.getElementById("dictionaryResults");
+  box.innerHTML = "";
+
+  if (!items.length) {
+    box.textContent = "لم يتم العثور على مصطلح.";
+    return;
+  }
+
+  items.forEach(term => {
+    const card = document.createElement("div");
+    card.className = "dict-entry";
+
+    const title = document.createElement("h3");
+    title.textContent = "🇩🇿 " + term[0];
+
+    const french = document.createElement("div");
+    french.className = "dict-fr";
+    french.textContent = "🇫🇷 " + term[1];
+
+    const explain = document.createElement("p");
+    explain.className = "dict-explain";
+    explain.textContent = term[2];
+
+    card.append(title, french, explain);
+    box.appendChild(card);
+  });
+}
+
+function searchDictionary() {
+  const q = document.getElementById("dictSearch").value.trim().toLowerCase();
+
+  const results = medicalTerms.filter(term => {
+    const matchesText = term.slice(0,3).join(" ").toLowerCase().includes(q);
+    const matchesCategory = activeDictionaryCategory === "الكل" ||
+      term[3] === activeDictionaryCategory;
+    return matchesText && matchesCategory;
+  });
+
+  renderDictionary(results);
+}
+
+function filterDictionary(category) {
+  activeDictionaryCategory = category;
+  searchDictionary();
+}
+
+renderDictionary(medicalTerms);
+
+</script>
+
+<script>
+const youbiExamQuestions = [
+ {
+  q: "ما هو المصطلح الفرنسي للقابلة؟",
+  a: ["Médecin", "Sage-femme", "Infirmier"],
+  c: 1,
+  e: "Sage-femme تعني القابلة."
+ },
+ {
+  q: "ما هو المصطلح الفرنسي للمشيمة؟",
+  a: ["Placenta", "Utérus", "Ovaire"],
+  c: 0,
+  e: "Placenta هو المصطلح الفرنسي للمشيمة."
+ },
+ {
+  q: "ما معنى Grossesse؟",
+  a: ["الولادة", "الحمل", "الرضاعة"],
+  c: 1,
+  e: "Grossesse تعني الحمل."
+ },
+ {
+  q: "ما هو المصطلح الفرنسي لحديث الولادة؟",
+  a: ["Nouveau-né", "Fœtus", "Embryon"],
+  c: 0,
+  e: "Nouveau-né تعني حديث الولادة."
+ },
+ {
+  q: "ما معنى Césarienne؟",
+  a: ["الولادة الطبيعية", "الرضاعة", "العملية القيصرية"],
+  c: 2,
+  e: "Césarienne تعني العملية القيصرية."
+ }
+];
+
+function startYoubiExam() {
+ const box = document.getElementById("examQuestions");
+ const result = document.getElementById("examResult");
+ result.innerHTML = "";
+
+ box.innerHTML = "";
+
+ youbiExamQuestions.forEach((q, i) => {
+   const div = document.createElement("div");
+   div.className = "exam-question";
+
+   const title = document.createElement("p");
+   title.textContent = (i + 1) + " ـ " + q.q;
+   div.appendChild(title);
+
+   q.a.forEach((answer, j) => {
+     const label = document.createElement("label");
+     label.className = "exam-option";
+
+     const radio = document.createElement("input");
+     radio.type = "radio";
+     radio.name = "youbiQ" + i;
+     radio.value = j;
+
+     label.appendChild(radio);
+     label.appendChild(document.createTextNode(answer));
+     div.appendChild(label);
+   });
+
+   box.appendChild(div);
+ });
+}
+
+function correctYoubiExam() {
+ let score = 0;
+ let correction = "";
+
+ youbiExamQuestions.forEach((q, i) => {
+   const selected = document.querySelector(
+     'input[name="youbiQ' + i + '"]:checked'
+   );
+
+   if (selected && Number(selected.value) === q.c) {
+     score++;
+     correction += '<p class="exam-correct">✓ السؤال ' +
+       (i + 1) + ': إجابة صحيحة</p>';
+   } else {
+     correction += '<p class="exam-wrong">✗ السؤال ' +
+       (i + 1) + ': الإجابة الصحيحة: ' +
+       q.a[q.c] + '</p>';
+   }
+
+   correction += '<small>' + q.e + '</small>';
+ });
+
+ const result = document.getElementById("examResult");
+ result.innerHTML =
+   "<h3>نتيجتك: " + score + " / " +
+   youbiExamQuestions.length + "</h3>" + correction;
+}
+
+startYoubiExam();
+</script>
+
+
+<script>
+function openYoubiExams() {
+  document.getElementById("youbiExams").style.display = "block";
+  document.getElementById("content").style.display = "none";
+  document.getElementById("youbiExams").scrollIntoView({behavior:"smooth"});
+}
+</script>
+
+
+
+
+<script>
+
+
+
+</script>
+
+</body>
+</html>
+
+<style>
+.grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+</style>

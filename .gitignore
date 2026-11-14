@@ -1,0 +1,17 @@
+.env
+.env.*
+*.key
+*.pem
+__pycache__/
+*.pyc
+.venv/
+venv/
+node_modules/
+.git/
+
+index.backup*.html
+index.before*.html
+index-backup.html
+index.backup2.html
+o
+*.tmp.pdf
